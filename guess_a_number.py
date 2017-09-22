@@ -1,9 +1,10 @@
 import random
+import math
 
 # config
 low = 1
 high = 10
-limit = 4
+limit = math.ceil(math.log(high - low + 1, 2))
 
 # helper functions
 def show_start_screen():
@@ -12,7 +13,7 @@ def show_start_screen():
     print("**************************")
 
 def show_credits():
-    print("This awesome game was created by Coop Dogg.")
+    print("This awesome game was created by Marc.")
     
 def get_guess():
     while True:
@@ -44,6 +45,7 @@ def show_result(guess, rand):
 def play_again():
     while True:
         decision = input("Would you like to play again? (y/n) ")
+        decision = decision.lower()
 
         if decision == 'y' or decision == 'yes':
             return True
@@ -77,4 +79,3 @@ while playing:
     playing = play_again()
 
 show_credits()
-
