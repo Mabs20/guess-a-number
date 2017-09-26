@@ -1,51 +1,50 @@
 import random
-import math
 
 # config
 low = 1
-high = 10
-limit = math.ceil(math.log(high - low + 1, 2))
+high = 1000
+
 
 # helper functions
 def show_start_screen():
-    print("**************************")
-    print("**** Guess a Number ! ****")
-    print("**************************")
+    print("*************************")
+    print("*  Guess a Number A.I!  *")
+    print("*************************")
 
 def show_credits():
-    print("This awesome game was created by Marc.")
+    pass
     
-def get_guess():
-    while True:
-        guess = input("Guess a number: ")
-
-        if guess.isnumeric():
-            guess = int(guess)
-            return guess
-        else:
-            print("You must enter a number.")
+def get_guess(current_low, current_high):
+    """
+    Return a truncated average of current low and high.
+    """
+    pass
 
 def pick_number():
-    print("I'm thinking of a number from " + str(low) + " to " + str(high) +".")
+    """
+    Ask the player to think of a number between low and high.
+    Then  wait until the player presses enter.
+    """
+    pass
 
-    return random.randint(low, high)
+def check_guess(guess):
+    """
+    Computer will ask if guess was too high, low, or correct.
 
-def check_guess(guess, rand):
-    if guess < rand:
-        print("You guessed too low.")
-    elif guess > rand:
-        print("You guessed too high.")
+    Returns -1 if the guess was too low
+             0 if the guess was correct
+             1 if the guess was too high
+    """
 
-def show_result(guess, rand):
-    if guess == rand:
-        print("You win!")
-    else:
-        print("You are such a loser! The number was " + str(rand) + ".")
+def show_result():
+    """
+    Says the result of the game. (The computer might always win.)
+    """
+    pass
 
 def play_again():
     while True:
         decision = input("Would you like to play again? (y/n) ")
-        decision = decision.lower()
 
         if decision == 'y' or decision == 'yes':
             return True
@@ -55,16 +54,22 @@ def play_again():
             print("I don't understand. Please enter 'y' or 'n'.")
 
 def play():
-    guess = -1
-    tries = 0
-
-    rand = pick_number()
+    current_low = low
+    current_high = high
+    check = -1
     
-    while guess != rand and tries < limit:
-        guess = get_guess()
-        check_guess(guess, rand)
+    pick_number()
+    
+    while check != 0:
+        guess = get_guess(current_low, current_high)
+        check = check_guess(guess)
 
-        tries += 1
+        if check == -1:
+            # adjust current_low
+            pass
+        elif check == 1:
+            # adjust current_high
+            pass
 
     show_result(guess, rand)
 
@@ -79,3 +84,6 @@ while playing:
     playing = play_again()
 
 show_credits()
+
+
+
