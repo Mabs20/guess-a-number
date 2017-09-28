@@ -15,37 +15,42 @@ def show_credits():
     pass
     
 def get_guess(current_low, current_high):
+    print("I'm thinking of...")
     guess = (current_high + current_low)//2
     return guess
 
 def pick_number():
     print("Think of number from " + str(low) + " and " + str(high) + ".")
+    print("Press 'Enter' when you've thought of a number")
     useless_1 = input ()
 
 def check_guess(guess):
     print(guess)
-    test = input("Tell me if my number was too low, too high, or correct.")
-    if "low" in test:
+    test = input("Tell me if my number was too low, too high, or correct. " )
+    if test in ["low", "lower"]:
         check = 1
-    if "high" in test:
+    if test in ["high", "higher"]:
         check = -1
-    if "correct" in test:
+    if test in ["correct", "right", "yes"]:
         check = 0
     return check
     
-def show_result():
-    """
-    Says the result of the game. (The computer might always win.)
-    """
-    pass
+def show_result(guess):
+    print()
+    print("I'll never lose to you")
+    
 
 def play_again():
     while True:
+        print()
         decision = input("Would you like to play again? (y/n) ")
 
         if decision == 'y' or decision == 'yes':
+            print("Alright, Goodluck.")
+            print()
             return True
         elif decision == 'n' or decision == 'no':
+            print("Okay. Bye.")
             return False
         else:
             print("I don't understand. Please enter 'y' or 'n'.")
