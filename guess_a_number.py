@@ -13,9 +13,9 @@ def show_start_screen():
 
 def show_credits():
     pass
-    
+
 def get_guess(current_low, current_high):
-    print("I'm thinking of...")
+    print("Is the number...")
     guess = (current_high + current_low)//2
     return guess
 
@@ -27,17 +27,19 @@ def pick_number():
 def check_guess(guess):
     print(guess)
     test = input("Tell me if my number was too low, too high, or correct. " )
-    if test in ["low", "lower"]:
+    print()
+    if test in ["low", "higher", "h", "H"]:
         check = 1
-    if test in ["high", "higher"]:
+    if test in ["high", "lower", "l" ,"L"]:
         check = -1
-    if test in ["correct", "right", "yes"]:
+    if test in ["correct", "right", "yes", "y", "Y", "c", "C"]:
         check = 0
     return check
     
 def show_result(guess):
     print()
-    print("I'll never lose to you")
+    print("Did you actually think I was gonna lose?")
+    print("I'll never lose to you!")
     
 
 def play_again():
